@@ -1,0 +1,24 @@
+{
+  "name": "env-writer",
+  "version": "0.0.1",
+  "description": "Streaming process.env writer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/digitalsadhu/env-writer.git"
+  },
+  "keywords": [
+    "env",
+    "streaming",
+    "writer"
+  ],
+  "author": "Richard Walker <digitalsadhu@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/digitalsadhu/env-writer/issues"
+  },
+  "homepage": "https://github.com/digitalsadhu/env-writer"
+}
