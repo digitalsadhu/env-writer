@@ -1,6 +1,6 @@
 'use strict';
 
-var envWriter = require('../index.js')
+var envWriter = require('../index.js')()
   , expect    = require('chai').expect
 
 describe('env-writer module', function () {

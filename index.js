@@ -64,4 +64,6 @@ var end = function end () {
   this.emit('end')
 }
 
-module.exports = through(write, end)
+module.exports = function () {
+  return through(write, end)
+}
