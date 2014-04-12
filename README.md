@@ -12,7 +12,7 @@ to process.env
 Require the module:
 
 ```js
-var env = require('env-writer')
+var env = require('env-writer')()
 ```
 
 Write a single value (all three of the following are valid):
