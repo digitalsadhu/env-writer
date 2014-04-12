@@ -1,11 +1,16 @@
 'use strict';
 
-var envWriter = require('../index.js')()
-  , expect    = require('chai').expect
+var env       = require('../index.js')
+  , expect    = require('chai').expect,
+  envWriter
 
 describe('env-writer module', function () {
 
   describe('writing env vars', function () {
+
+    beforeEach(function () {
+      envWriter = env()
+    })
 
     it('should accept an object with key and value properties', function () {
       expect(process.env.THING).to.be.an('undefined')
@@ -81,6 +86,16 @@ describe('env-writer module', function () {
         value: 'overwritten!'
       })), 'utf8');
       expect(process.env.DONT_OVERWRITE).to.equal('not overwritten')
+    })
+
+    it('should overwrite existing process.env vars if specified', function () {
+      envWriter = env(true)
+      process.env.OVERWRITE_ME = 'not overwritten'
+      envWriter.write(new Buffer(JSON.stringify({
+        key: 'OVERWRITE_ME',
+        value: 'overwritten!'
+      })), 'utf8');
+      expect(process.env.OVERWRITE_ME).to.equal('overwritten!')
     })
 
   })
