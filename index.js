@@ -19,36 +19,45 @@ var getFormat = function getFormat(data) {
   return false
 }
 
-var setEnv = function setEnv(data, format) {
+var set = function set(key, value, overwrite) {
+  if (process.env[key] && overwrite === false)
+    return
+  process.env[key] = value
+}
+
+var setEnv = function setEnv(data, format, overwrite) {
 
   if (format === 'keyed-object') {
-    process.env[data.key] = data.value
+    set(data.key, data.value, overwrite)
     return true
   }
 
   if (format === 'object') {
     var keys = Object.keys(data)
     keys.forEach(function (key) {
-      process.env[key] = data[key]
+      set(key, data[key], overwrite)
     })
   }
 
   if (format === 'multi-array') {
     data.forEach(function (envArr) {
-      process.env[envArr[0]] = envArr[1]
+      set(envArr[0], envArr[1], overwrite)
     })
     return true
   }
 
   if (format === 'array') {
-    process.env[data[0]] = data[1]
+    set(data[0], data[1], overwrite)
     return true
   }
 
   return false
 }
 
-module.exports = function () {
+module.exports = function (overwrite) {
+
+  if (typeof overwrite === 'undefined')
+    overwrite = false
 
   var write = function write(data) {
 
@@ -58,7 +67,7 @@ module.exports = function () {
     if (typeof data === 'string')
       data = JSON.parse(data)
 
-    setEnv(data, getFormat(data))
+    setEnv(data, getFormat(data), overwrite)
     this.emit('data', data)
   }
 
