@@ -74,5 +74,14 @@ describe('env-writer module', function () {
       expect(process.env.BUFFER).to.equal('stuff')
     })
 
+    it('should not overwrite existing process.env vars by default', function () {
+      process.env.DONT_OVERWRITE = 'not overwritten'
+      envWriter.write(new Buffer(JSON.stringify({
+        key: 'DONT_OVERWRITE',
+        value: 'overwritten!'
+      })), 'utf8');
+      expect(process.env.DONT_OVERWRITE).to.equal('not overwritten')
+    })
+
   })
 })
