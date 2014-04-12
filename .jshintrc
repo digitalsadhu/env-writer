@@ -4,7 +4,8 @@
     "require": false,
     "__dirname": false,
     "describe": false,
-    "it": false
+    "it": false,
+    "beforeEach": false
   },
   "asi": true,
   "node": true
