@@ -1,6 +1,6 @@
 {
   "name": "env-writer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Streaming process.env writer",
   "main": "index.js",
   "scripts": {
