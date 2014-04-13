@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/digitalsadhu/env-writer.svg?branch=master)](https://travis-ci.org/digitalsadhu/env-writer)
 
+[![NPM](https://nodei.co/npm/env-writer.png)](https://nodei.co/npm/env-writer/)
+
 env-writer
 ==========
 
